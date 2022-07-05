@@ -11,7 +11,7 @@ public class Get01 {
         a) gereksinimleri anlama
         b) test case'i yazma
            i) test case yazimi icin Gherkin Language kullaniyoruz.
-              'Gherkin' bazi keyword'lere sahip, bunlar:
+              'Gherkin' bazi keyword'lere sahiptir, bunlar:
                x) Given: on kosul
                y) When: aksiyonlar-->Get, Put, ...
                z) Then: donutler-->Assert
@@ -71,7 +71,7 @@ public class Get01 {
         System.out.println(response.header("Accept-Encoding"));
 
         //'Headers' nasil yazdirilir:
-        System.out.println("headers:\n" + response.header("Accept-Encoding"));
+        System.out.println("headers:\n" + response.headers());
 
         //'Time' nasil yazdirilir:
         System.out.println("time: " + response.getTime());
