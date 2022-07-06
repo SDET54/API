@@ -1,3 +1,6 @@
+package get_requests;
+
+import base_urls.JsonplaceholderBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -5,7 +8,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class Get03 extends BaseUrls {
+public class Get03 extends JsonplaceholderBaseUrl {
 
     /*
         Given
@@ -59,4 +62,17 @@ public class Get03 extends BaseUrls {
                         "userId", equalTo(2));
 
     }
+
+    /*
+    Note 1: Assertion yaparken Java calismayi durdurdugunda hata sonrasi kodlar calismaz.
+            Boylece hata sonrasi assertion'lar hakkinda bilgi sahibi olamayiz.
+            Fakat hata oncesi assertion'lar gecmistir.
+
+     Note 2: Eger kodumuzu hata noktasinda duracak sekilde yazarsak "Hard Assertion" yapmis oluyoruz.
+
+     Note 3: Eger kodumuzu hata noktasinda durmayacak sekilde yazarsak "Soft Assertion" yapmis oluyoruz.
+
+     Note 4: Eger coklu body() methodu icinde assert yaparsak "Hard Assert",
+             tek body() methodu icinde assert yaparsak "Soft Assert" yapmis oluyoruz.
+     */
 }
