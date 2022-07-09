@@ -31,13 +31,13 @@ public class Get04 extends JsonplaceholderBaseUrl {
     @Test
     public void get01() {
         //1. set the url
-        spec.pathParam("first", "todos");
+        specJsonplaceholder.pathParam("first", "todos");
 
         //2. set the expected data
 
         //3. send the request and get the response
         Response response = given().
-                spec(spec).
+                spec(specJsonplaceholder).
                 when().
                 accept(ContentType.JSON).
                 get("/{first}");

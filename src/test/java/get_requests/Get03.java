@@ -32,12 +32,12 @@ public class Get03 extends JsonplaceholderBaseUrl {
         //i) Set the URL
         // String url = "https://jsonplaceholder.typicode.com/todos/23"; //onerilmiyor
 
-        spec.pathParams("first", "todos", "second", 23);
+        specJsonplaceholder.pathParams("first", "todos", "second", 23);
 
         //ii) Set the expected data(Post-Put-Patch)
         //iii) Send the request and get the Response
 
-        Response response = given().spec(spec).when().get("/{first}/{second}");
+        Response response = given().spec(specJsonplaceholder).when().get("/{first}/{second}");
         //response.prettyPrint();
 
         //iv) Do Assertion

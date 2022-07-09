@@ -24,7 +24,7 @@ public class Get05 extends HerokuappBaseUrl {
     @Test
     public void get01() {
         //1. set the url
-        spec.
+        specHerokuapp.
                 pathParam("first", "booking").
                 queryParams("firstname", "Aaron",
                         "lastname", "Chen");
@@ -32,7 +32,7 @@ public class Get05 extends HerokuappBaseUrl {
         //2. set the expected data
 
         //3. send the request, get the response
-        Response response = given().spec(spec).when().get("/{first}");
+        Response response = given().spec(specHerokuapp).when().get("/{first}");
         //response.prettyPrint();
 
         //4. do assertion
@@ -45,7 +45,7 @@ public class Get05 extends HerokuappBaseUrl {
         //System.out.println(responseListesi);
 
         for (Integer integer : responseListesi) {
-            response = given().spec(spec).when().get("/{first}/" + integer);
+            response = given().spec(specHerokuapp).when().get("/{first}/" + integer);
             //assertResponse.prettyPrint();
             response.then().assertThat().body("firstname", equalTo("Aaron"),
                     "lastname", equalTo("Chen"));

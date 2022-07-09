@@ -6,12 +6,12 @@ import org.junit.Before;
 
 public class HerokuappBaseUrl {
 
-    protected RequestSpecification spec;
+    protected RequestSpecification specHerokuapp;
 
     //@Before annotation'i kullandigimiz methodlar her Test methodundan once calistirilir.
     @Before
     public void setup() {
-        spec = new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com").build();
+        specHerokuapp = new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com").build();
     }
 
 }
