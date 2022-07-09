@@ -1,5 +1,6 @@
 package practice;
 
+import base_urls.JsonplaceholderBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -13,13 +14,13 @@ public class API_GetRequest extends JsonplaceholderBaseUrl {
     public void get01() {
 
         //1. set the url
-        spec.pathParams("first", "posts", "second", 44);
+        specJsonplaceholder.pathParams("first", "posts", "second", 44);
 
         //2. set the expexted data(post-put-patch)
 
         //3. send the request and get the response
 
-        Response response = given().spec(spec).when().get("/{first}/{second}");
+        Response response = given().spec(specJsonplaceholder).when().get("/{first}/{second}");
         // response.prettyPrint();
 
         //4. do assertion

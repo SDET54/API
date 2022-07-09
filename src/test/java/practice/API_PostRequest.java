@@ -1,5 +1,6 @@
 package practice;
 
+import base_urls.JsonplaceholderBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -36,7 +37,7 @@ public class API_PostRequest extends JsonplaceholderBaseUrl {
          */
 
         //1. set the url and request
-        spec.pathParams("first", "posts");
+        specJsonplaceholder.pathParams("first", "posts");
 
         JSONObject reqBody = new JSONObject();
 
@@ -54,7 +55,7 @@ public class API_PostRequest extends JsonplaceholderBaseUrl {
 
         //3. save response
 
-        Response response = given().spec(spec).
+        Response response = given().spec(specJsonplaceholder).
                 contentType(ContentType.JSON).
                 when().
                 body(reqBody.toString()).

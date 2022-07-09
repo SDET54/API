@@ -1,6 +1,7 @@
 package get_requests;
 
 import base_urls.HerokuappBaseUrl;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
 
@@ -19,20 +20,18 @@ public class Get05 extends HerokuappBaseUrl {
         Then
             Status code is 200
 	  	And
-	  		Among the data there should be someone whose firstname is "Aaron" and last name is "Chen"
+	  		Among the data there should be someone whose firstname is "Zbigniew" and last name is "Angermann"
      */
     @Test
     public void get01() {
         //1. set the url
         specHerokuapp.
-                pathParam("first", "booking").
-                queryParams("firstname", "Aaron",
-                        "lastname", "Chen");
+                pathParam("first", "booking");
 
         //2. set the expected data
 
         //3. send the request, get the response
-        Response response = given().spec(specHerokuapp).when().get("/{first}");
+        Response response = given().spec(specHerokuapp).when().get("{first}");
         //response.prettyPrint();
 
         //4. do assertion
@@ -41,17 +40,26 @@ public class Get05 extends HerokuappBaseUrl {
                 assertThat().
                 statusCode(200);
 
-        List<Integer> responseListesi = response.jsonPath().getList("bookingid");
-        //System.out.println(responseListesi);
+        JsonPath rspJSPath = response.jsonPath();
 
-        for (Integer integer : responseListesi) {
-            response = given().spec(specHerokuapp).when().get("/{first}/" + integer);
-            //assertResponse.prettyPrint();
-            response.then().assertThat().body("firstname", equalTo("Aaron"),
-                    "lastname", equalTo("Chen"));
-            break;
+        List<Integer> bookingidListesi = rspJSPath.getList("bookingid");
+        //System.out.println(bookingidListesi);
+
+        for (Integer bookingId : bookingidListesi) {
+            response = given().spec(specHerokuapp).when().get("{first}/" + bookingId);
+            //response.prettyPrint();
+
+            rspJSPath = response.jsonPath();
+            try {
+                if (rspJSPath.get("firstname").equals("Zbigniew")) {
+                    response.then().assertThat().body("lastname", equalTo("Angermann"));
+                    System.out.println("booking id: " + bookingId);
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println(bookingId + " no-lu kayiti kontrol edin");
+            }
         }
-
     }
 }
 
