@@ -2,6 +2,9 @@ package testDataDeposu;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class JsonplaceholderTestData {
 
     public int basariliStatusKod = 200;
@@ -16,5 +19,15 @@ public class JsonplaceholderTestData {
         body.put("body", "eos qui et ipsum ipsam suscipit aut\nsed omnis non odio\nexpedita earum mollitia molestiae aut atque rem suscipit\nnam impedit esse");
 
         return body;
+    }
+
+    public Map<String, Object> expectedDataWithAllKeys(Integer userId, String title, Boolean completed){
+        Map<String, Object> expectedData = new HashMap<>();
+        expectedData.put("userId", userId);
+        expectedData.put("title", title);
+        expectedData.put("completed", completed);
+
+
+        return expectedData;
     }
 }
