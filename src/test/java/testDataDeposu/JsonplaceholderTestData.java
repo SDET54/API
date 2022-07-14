@@ -21,7 +21,7 @@ public class JsonplaceholderTestData {
         return body;
     }
 
-    public Map<String, Object> expectedDataWithAllKeys(Integer userId, String title, Boolean completed){
+    public Map<String, Object> expectedDataWithAllKeys(Integer userId, String title, Boolean completed) {
         Map<String, Object> expectedData = new HashMap<>();
         expectedData.put("userId", userId);
         expectedData.put("title", title);

@@ -59,8 +59,8 @@ public class Get09 extends HerokuappBaseUrl {
         assertEquals(expectedData.get("lastname"), actualData.get("lastname"));
         assertEquals(expectedData.get("totalprice"), actualData.get("totalprice"));
         assertEquals(expectedData.get("depositpaid"), actualData.get("depositpaid"));
-        assertEquals(bookingdatesMap.get("checkin"), ((Map)actualData.get("bookingdates")).get("checkin"));
-        assertEquals(bookingdatesMap.get("checkout"), ((Map)actualData.get("bookingdates")).get("checkout"));
+        assertEquals(bookingdatesMap.get("checkin"), ((Map) actualData.get("bookingdates")).get("checkin"));
+        assertEquals(bookingdatesMap.get("checkout"), ((Map) actualData.get("bookingdates")).get("checkout"));
         assertEquals(expectedData.get("additionalneeds"), actualData.get("additionalneeds"));
 
     }
