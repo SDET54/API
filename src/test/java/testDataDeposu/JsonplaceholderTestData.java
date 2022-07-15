@@ -8,6 +8,7 @@ import java.util.Map;
 public class JsonplaceholderTestData {
 
     public int basariliStatusKod = 200;
+    public int expectedPutStatusCode = 200;
 
     public JSONObject expectedDataOlustur() {
 
