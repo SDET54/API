@@ -10,6 +10,8 @@ public class JsonplaceholderTestData {
     public int basariliStatusKod = 200;
     public int expectedPutStatusCode = 200;
 
+    public int expectedPatchStatusCode = 200;
+
     public JSONObject expectedDataOlustur() {
 
         JSONObject body = new JSONObject();
@@ -28,6 +30,21 @@ public class JsonplaceholderTestData {
         expectedData.put("title", title);
         expectedData.put("completed", completed);
 
+
+        return expectedData;
+    }
+
+    public Map<String, Object> expectedDataWithMissingKeys(Integer userId, String title, Boolean completed) {
+        Map<String, Object> expectedData = new HashMap<>();
+        if (userId != null) {
+            expectedData.put("userId", userId);
+        }
+        if (title != null) {
+            expectedData.put("title", title);
+        }
+        if (completed != null) {
+            expectedData.put("completed", completed);
+        }
 
         return expectedData;
     }
