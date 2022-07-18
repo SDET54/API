@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import testDataDeposu.JsonplaceholderTestData;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +37,7 @@ public class Patch01 extends JsonplaceholderBaseUrl {
         specJsonplaceholder.pathParams("pp1", "todos", "pp2", "198");
 
         //set the request body
+
         JsonplaceholderTestData jTd = new JsonplaceholderTestData();
         Map<String, Object> requestBody = jTd.expectedDataWithMissingKeys(null, "Wash the dishes", null);
 
