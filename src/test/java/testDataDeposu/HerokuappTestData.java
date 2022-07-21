@@ -25,4 +25,23 @@ public class HerokuappTestData {
 
         return expectedData;
     }
+
+    public String expectedStr(String firstname, String lastname, int totalprice, boolean depositpaid, String checkin, String checkout, String additionalneeds) {
+
+        String bookingdates =
+                "         \"checkin\": \"" + checkin + "\",\n" +
+                        "         \"checkout\": \"" + checkout + "\"\n";
+        String expectedStr = "{\n" +
+                "     \"firstname\": \"" + firstname + "\",\n" +
+                "     \"lastname\": \"" + lastname + "\",\n" +
+                "     \"totalprice\": " + totalprice + ",\n" +
+                "     \"depositpaid\": " + depositpaid + ",\n" +
+                "     \"bookingdates\": {\n" + bookingdates +
+                "     },\n" +
+                "     \"additionalneeds\": \"" + additionalneeds + "\"\n" +
+                "}";
+
+        return expectedStr;
+
+    }
 }

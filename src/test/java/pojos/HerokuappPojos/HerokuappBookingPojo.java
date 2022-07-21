@@ -3,19 +3,19 @@ package pojos.HerokuappPojos;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BookingPojo {
+public class HerokuappBookingPojo {
 
     private String firstname;
     private String lastname;
     private Integer totalprice;
     private Boolean depositpaid;
-    private BookingdatesPojo bookingdates;
+    private HerokuappBookingdatesPojo bookingdates;
     private String additionalneeds;
 
-    public BookingPojo() {
+    public HerokuappBookingPojo() {
     }
 
-    public BookingPojo(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingdatesPojo bookingdates, String additionalneeds) {
+    public HerokuappBookingPojo(String firstname, String lastname, int totalprice, boolean depositpaid, HerokuappBookingdatesPojo bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
@@ -56,11 +56,11 @@ public class BookingPojo {
         this.depositpaid = depositpaid;
     }
 
-    public BookingdatesPojo getBookingdates() {
+    public HerokuappBookingdatesPojo getBookingdates() {
         return bookingdates;
     }
 
-    public void setBookingdates(BookingdatesPojo bookingdates) {
+    public void setBookingdates(HerokuappBookingdatesPojo bookingdates) {
         this.bookingdates = bookingdates;
     }
 

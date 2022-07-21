@@ -48,4 +48,14 @@ public class JsonplaceholderTestData {
 
         return expectedData;
     }
+
+    public String expectedData(int userId, String title, boolean completed) {
+        String expectedData = "{\n" +
+                "\"userId\": " + userId + ",\n" +
+                "\"title\": \"" + title + "\",\n" +
+                "\"completed\": " + completed + "\n" +
+                "}";
+
+        return expectedData;
+    }
 }

@@ -3,15 +3,15 @@ package pojos.HerokuappPojos;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BookingdatesPojo {
+public class HerokuappBookingdatesPojo {
 
     private String checkin;
     private String checkout;
 
-    public BookingdatesPojo() {
+    public HerokuappBookingdatesPojo() {
     }
 
-    public BookingdatesPojo(String checkin, String checkout) {
+    public HerokuappBookingdatesPojo(String checkin, String checkout) {
         this.checkin = checkin;
         this.checkout = checkout;
     }

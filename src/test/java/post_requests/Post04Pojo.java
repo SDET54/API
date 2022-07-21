@@ -4,9 +4,9 @@ import base_urls.HerokuappBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
-import pojos.HerokuappPojos.BookingPojo;
-import pojos.HerokuappPojos.BookingdatesPojo;
-import pojos.HerokuappPojos.ResponsePojo;
+import pojos.HerokuappPojos.HerokuappBookingPojo;
+import pojos.HerokuappPojos.HerokuappBookingdatesPojo;
+import pojos.HerokuappPojos.HerokuappResponsePojo;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
@@ -53,18 +53,23 @@ public class Post04Pojo extends HerokuappBaseUrl {
         specHerokuapp.pathParam("pp1", "booking");
 
         //set the request body
-        BookingdatesPojo bookingdates = new BookingdatesPojo("2021-09-21", "2021-12-21");
+        HerokuappBookingdatesPojo bookingdates = new HerokuappBookingdatesPojo("2021-09-21", "2021-12-21");
 
-        BookingPojo requestBody = new BookingPojo("Ali", "Can", 999, true, bookingdates, "Breakfast with white tea, Dragon juice");
+        HerokuappBookingPojo requestBody = new HerokuappBookingPojo("Ali", "Can", 999, true, bookingdates, "Breakfast with white tea, Dragon juice");
 
         //send the post request, get the response
         Response response = given().spec(specHerokuapp).contentType(ContentType.JSON).body(requestBody).when().post("{pp1}");
         //response.prettyPrint();
 
-        ResponsePojo actualBody = response.as(ResponsePojo.class);
+        HerokuappResponsePojo actualBody = response.as(HerokuappResponsePojo.class);
 
         //do assertions
         assertEquals(200, response.getStatusCode());
+
+        //1.way
+        assertEquals(requestBody.toString(), actualBody.getBooking().toString());
+
+        //2.way
         assertEquals(requestBody.getFirstname(), actualBody.getBooking().getFirstname());
         assertEquals(requestBody.getLastname(), actualBody.getBooking().getLastname());
         assertEquals(requestBody.getTotalprice(), actualBody.getBooking().getTotalprice());
@@ -73,7 +78,5 @@ public class Post04Pojo extends HerokuappBaseUrl {
         assertEquals(requestBody.getBookingdates().getCheckout(), actualBody.getBooking().getBookingdates().getCheckout());
         assertEquals(requestBody.getAdditionalneeds(), actualBody.getBooking().getAdditionalneeds());
 
-
     }
-
 }

@@ -3,17 +3,17 @@ package pojos.HerokuappPojos;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ResponsePojo {
+public class HerokuappResponsePojo {
 
     private Integer bookingid;
-    private BookingPojo booking;
+    private HerokuappBookingPojo booking;
 
-    public ResponsePojo(Integer bookingid, BookingPojo booking) {
+    public HerokuappResponsePojo(Integer bookingid, HerokuappBookingPojo booking) {
         this.bookingid = bookingid;
         this.booking = booking;
     }
 
-    public ResponsePojo() {
+    public HerokuappResponsePojo() {
     }
 
     public Integer getBookingid() {
@@ -25,11 +25,11 @@ public class ResponsePojo {
     }
 
 
-    public BookingPojo getBooking() {
+    public HerokuappBookingPojo getBooking() {
         return booking;
     }
 
-    public void setBooking(BookingPojo booking) {
+    public void setBooking(HerokuappBookingPojo booking) {
         this.booking = booking;
     }
 
