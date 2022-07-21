@@ -39,18 +39,18 @@ public class Get16ObjectMapper extends DummyrestapiBaseUrl {
                 body("data.employee_name", hasItems("Tiger Nixon", "Garrett Winters")); //"Tiger Nixon" and "Garrett Winters" are among the employees
 
         //The greatest age is 66
-        List<Integer> ages = response.jsonPath().getList("data.findAll{it.id>0}employee_age");
-        int maxAge = ages.stream().reduce(Integer.MIN_VALUE, (x, y) -> x > y ? x : y);
-        assertEquals(66, maxAge);
+        List<Integer> ageList = response.jsonPath().getList("data.findAll{it.id>0}employee_age");
+        int actualMaxAge = ageList.stream().reduce(Integer.MIN_VALUE, (x, y) -> x > y ? x : y);
+        assertEquals(66, actualMaxAge);
 
         //The name of the lowest age is "Tatyana Fitzpatrick"
-        int minAge = ages.stream().reduce(Integer.MAX_VALUE, (x, y) -> x > y ? y : x);
-        String expectedMinAgeName = response.jsonPath().getString("data.findAll{it.employee_age==" + minAge + "}.employee_name").replace("[", "").replace("]", "");
-        assertEquals("Tatyana Fitzpatrick", expectedMinAgeName);
+        int actualMinAge = ageList.stream().reduce(Integer.MAX_VALUE, (x, y) -> x > y ? y : x);
+        String actualMinAgeName = response.jsonPath().getString("data.findAll{it.employee_age==" + actualMinAge + "}.employee_name").replace("[", "").replace("]", "");
+        assertEquals("Tatyana Fitzpatrick", actualMinAgeName);
 
         //Total salary of all employees is 6,644,770
         List<Integer> salaryList = response.jsonPath().getList("data.findAll{it.id>0}.employee_salary");
-        int totalSalary = salaryList.stream().reduce(0, Integer::sum);
-        assertEquals(6644770, totalSalary);
+        int actualTotalSalary = salaryList.stream().reduce(0, Integer::sum);
+        assertEquals(6644770, actualTotalSalary);
     }
 }
