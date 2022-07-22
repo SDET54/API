@@ -24,6 +24,26 @@ public class Get16ObjectMapper extends DummyrestapiBaseUrl {
                    vi) Total salary of all employees is 6,644,770
     */
 
+    /*
+    Given
+        https://dummy.restapiexample.com/api/v1/employees
+    When
+        user sends get request to url
+    Then
+        Status code is 200
+    And
+        There are 24 employees
+    And
+        "Tiger Nixon" and "Garrett Winters" are among the employees
+    And
+        The greatest age is 66
+    And
+        The name of the lowest age is "Tatyana Fitzpatrick"
+    And
+        Total salary of all employees is 6,644,770
+
+     */
+
     @Test
     public void get01ObjectMapper() {
         //set the url
@@ -39,7 +59,7 @@ public class Get16ObjectMapper extends DummyrestapiBaseUrl {
                 body("data.employee_name", hasItems("Tiger Nixon", "Garrett Winters")); //"Tiger Nixon" and "Garrett Winters" are among the employees
 
         //The greatest age is 66
-        List<Integer> ageList = response.jsonPath().getList("data.findAll{it.id>0}employee_age");
+        List<Integer> ageList = response.jsonPath().getList("data.employee_age");
         int actualMaxAge = ageList.stream().reduce(Integer.MIN_VALUE, (x, y) -> x > y ? x : y);
         assertEquals(66, actualMaxAge);
 
@@ -49,7 +69,7 @@ public class Get16ObjectMapper extends DummyrestapiBaseUrl {
         assertEquals("Tatyana Fitzpatrick", actualMinAgeName);
 
         //Total salary of all employees is 6,644,770
-        List<Integer> salaryList = response.jsonPath().getList("data.findAll{it.id>0}.employee_salary");
+        List<Integer> salaryList = response.jsonPath().getList("data.employee_salary");
         int actualTotalSalary = salaryList.stream().reduce(0, Integer::sum);
         assertEquals(6644770, actualTotalSalary);
     }
