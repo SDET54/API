@@ -50,7 +50,7 @@ public class Get17 extends DummyrestapiBaseUrl {
         specDummyrestapi.pathParams("pp1", "employee", "pp2", 1);
 
         //set the expected data
-        DummyDataPojo dataBody = new DummyDataPojo("", "Tiger Nixon", 320800, 1, 61);
+        DummyDataPojo dataBody = new DummyDataPojo("", "Tiger Nixon", 320800, 61);
         DummyResponsePojo expectedBody = new DummyResponsePojo(dataBody, "Successfully! Record has been fetched.", "success");
 
         //send the request, get the response
@@ -63,7 +63,6 @@ public class Get17 extends DummyrestapiBaseUrl {
         assertEquals(expectedBody.getStatus(), actualBody.getStatus());
         assertEquals(expectedBody.getData().getEmployee_age(), actualBody.getData().getEmployee_age());
         assertEquals(expectedBody.getData().getEmployee_name(), actualBody.getData().getEmployee_name());
-        assertEquals(expectedBody.getData().getId(), actualBody.getData().getId());
         assertEquals(expectedBody.getData().getEmployee_salary(), actualBody.getData().getEmployee_salary());
         assertEquals(expectedBody.getData().getProfile_image(), actualBody.getData().getProfile_image());
 
